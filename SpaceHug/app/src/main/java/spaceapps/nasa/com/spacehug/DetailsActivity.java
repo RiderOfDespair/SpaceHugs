@@ -12,10 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -170,6 +173,19 @@ public class DetailsActivity extends Activity{
     }
 
 
+    public void sendHug(View v){
 
+        ServerData.postHug(new AsyncHttpResponseHandler(){
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                super.onSuccess(statusCode, headers, responseBody);
+
+                Toast.makeText(getApplicationContext(), "Hug Sent!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
 
 }

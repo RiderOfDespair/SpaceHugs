@@ -15,11 +15,17 @@ public class ServerData {
 
     private static final String IMAGE_SEARCH_DATA = "http://niclinscott.com/php/space-hugs/getGoogleImages.php";
 
+    private static final String PI = "www.google.com";
+
     public static void getCrewData(RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.get(CREW_MEMBERS_JSON, params, responseHandler);
     }
 
     public static void getCrewMemberDetails(RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.post(IMAGE_SEARCH_DATA, params, responseHandler);
+    }
+
+    public static void postHug(AsyncHttpResponseHandler handler){
+        client.post(CREW_MEMBERS_JSON, handler);
     }
 }
